@@ -18,7 +18,7 @@ CFLAGS += -W -Wall -Wextra -pedantic -I./include -Wno-deprecated
 
 DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include $(CSFML)
 
-TEST	=	lib/my/test.c
+TEST	=	lib/test.c
 
 all:	$(NAME)
 
@@ -29,14 +29,15 @@ $(NAME):	$(OBJ)
 		@echo "\033[1;34mCompilation Completed !\033[0;43m"
 
 clean:
-		rm -f lib/my/*.o
+		rm -f lib/*.o
 		rm -f $(OBJ)
 		rm -f a.out
+		rm -f vgcore.*
 
 fclean: clean
 		@echo "\033[1;31mDeleting files...\033[0;13m"
 		rm -f $(NAME)
-		rm -f lib/my/libmy.a
+		rm -f lib/libmy.a
 
 test_fclean: clean
 		make -C ./tests/ fclean
@@ -44,8 +45,8 @@ test_fclean: clean
 re: fclean all
 
 debug:	fclean
-		make -C lib/my
-		gcc -o $(NAME) $(SRC) -L./lib/my -I./include -lmy $(DEBUG)
+		make -C lib/
+		gcc -o $(NAME) $(SRC) -L./lib/ -I./include -lmy $(DEBUG)
 
 test_run:
 		make -C ./tests/ test_run

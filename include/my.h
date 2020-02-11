@@ -8,5 +8,6 @@
 #ifndef MY_H
 #define MY_H
 
+int navy(int argc, char **argv);
 
 #endif

@@ -29,7 +29,7 @@ int error_handling(int argc)
 
 int navy(int argc, char **argv)
 {
-    if (argc == 1 && (argv[1][0] == '-' && argv[1][1] == 'h')) {
+    if (argc == 2 && (argv[1][0] == '-' && argv[1][1] == 'h')) {
         usage();
         return (1);
     }
