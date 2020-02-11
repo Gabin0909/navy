@@ -5,7 +5,7 @@
 ** my_put_nbr_base
 */
 
-#include "my.h"
+#include "lib.h"
 
 int	my_put_nbr_base(int nb, char *base)
 {

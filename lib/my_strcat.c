@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
+#include "lib.h"
 
 char *my_strcat(char *dest, char *str1, char *str2)
 {

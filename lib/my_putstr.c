@@ -5,7 +5,7 @@
 ** task02
 */
 
-#include "my.h"
+#include "lib.h"
 
 int my_putstr(char const *str)
 {

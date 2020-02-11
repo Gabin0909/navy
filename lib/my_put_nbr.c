@@ -5,7 +5,7 @@
 ** Task07
 */
 
-#include "my.h"
+#include "lib.h"
 
 int my_put_nbr(int nb)
 {

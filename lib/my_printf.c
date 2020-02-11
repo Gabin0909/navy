@@ -5,7 +5,7 @@
 ** my_printf
 */
 
-#include "my.h"
+#include "lib.h"
 #include <stdarg.h>
 
 int search_flag(va_list arg, char *str, int i)

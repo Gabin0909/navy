@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
+#include "lib.h"
 
 void print_double_char(char **d_str)
 {

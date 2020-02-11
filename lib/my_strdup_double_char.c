@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
+#include "lib.h"
 
 char **my_strdup_double_char(char **dest, char **src)
 {
