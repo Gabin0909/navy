@@ -6,8 +6,9 @@
 ##
 
 SRC		=	src/main.c\
+			src/navy.c\
 
-NAME	=	my_defender
+NAME	=	navy
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -23,8 +24,8 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 		@echo "\033[1;35mCompiling lib....\033[0;53m"
-		make -C lib/my
-		gcc -o $(NAME) $(SRC) -L./lib/my -lmy $(CFLAGS) $(CSFML)
+		make -C lib
+		gcc -o $(NAME) $(SRC) -L./lib -lmy $(CFLAGS) $(CSFML)
 		@echo "\033[1;34mCompilation Completed !\033[0;43m"
 
 clean:
