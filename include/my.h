@@ -10,5 +10,6 @@
 
 int navy(int argc, char **argv);
 int mabite(char *prout);
+int sex(int);
 
 #endif
