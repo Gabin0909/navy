@@ -32,6 +32,7 @@ NAME	=	libmy.a
 all:	$(NAME)
 
 $(NAME):
+	@echo -e "\033[1;35m[Compiling library...]\033[0;13m"
 	gcc -c $(SRC) -I../include/
 	ar rc $(NAME) $(OBJ)
 
