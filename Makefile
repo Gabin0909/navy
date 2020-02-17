@@ -14,7 +14,7 @@ NAME	=	navy
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS += -W -Wall -Wextra -pedantic -I./include -Wno-deprecated -L./lib -lmy
+CFLAGS += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy
 
 CSFML += -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
 
