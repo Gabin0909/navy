@@ -15,6 +15,6 @@ char **create_map(void);
 int navy(int, char **);
 int file_error(int, char **);
 int check_file(char ***);
-int player_connection(int, char **, p_info_t);
+int player_connection(int, char **);
 
 #endif
