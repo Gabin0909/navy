@@ -22,6 +22,18 @@ int check_boat_length(char ***boat)
     return (0);
 }
 
+int check_miss_arg_split(char ***boat)
+{
+    int b = 0;
+
+    for (int j = 0; boat[j] != NULL; j++) {
+        for (; boat[j][b] != NULL; b++);
+        if (b != 3)
+            return (1);
+        b = 0;
+    }
+}
+
 int check_file(char ***boat)
 {
     int i = 0;
@@ -30,12 +42,8 @@ int check_file(char ***boat)
     for (; boat[i] != NULL; i++);
     if (i != 4)
         return (1);
-    for (int j = 0; boat[j] != NULL; j++) {
-        for (; boat[j][b] != NULL; b++);
-        if (b != 3)
-            return (1);
-        b = 0;
-    }
+    if (check_miss_arg_split(boat) != 0)
+        return (1);
     if (check_boat_length(boat) != 0)
         return (1);
     return (0);
