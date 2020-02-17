@@ -6,6 +6,7 @@
 */
 
 #include "lib.h"
+#include "my.h"
 
 void usage(void)
 {
@@ -20,7 +21,7 @@ void usage(void)
 
 int error_handling(int argc)
 {
-    if (argc != 3) {
+    if (argc != 3 && argc != 2) {
         my_putstr("Invalid arguments: ./navy -h for more help.\n");
         return (84);
     }
@@ -34,6 +35,8 @@ int navy(int argc, char **argv)
         return (1);
     }
     if (error_handling(argc) == 84)
+        return (84);
+    if (file_error(argc, argv) != 0)
         return (84);
     return (0);
 }

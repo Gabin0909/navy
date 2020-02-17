@@ -24,6 +24,8 @@ SRC	=	    my_putchar.c				\
 			my_strcat.c 				\
 			print_double_char.c 		\
 			free_double_char.c 			\
+			free_triple_array.c 		\
+			get_next_line.c 			\
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -33,7 +35,7 @@ all:	$(NAME)
 
 $(NAME):
 	@echo -e "\033[1;35m[Compiling library...]\033[0;13m"
-	gcc -c $(SRC) -I../include/
+	gcc -c $(SRC) -I../include/ -g3
 	ar rc $(NAME) $(OBJ)
 
 clean:

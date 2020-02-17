@@ -5,8 +5,10 @@
 ## Makefile
 ##
 
-SRC		=	src/main.c\
-			src/navy.c\
+SRC		=	src/main.c			\
+			src/navy.c			\
+			src/file_error.c	\
+			src/check_file.c 	\
 
 NAME	=	navy
 
