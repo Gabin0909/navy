@@ -5,6 +5,8 @@
 ** player_connection.c
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
 #include <sys/wait.h>
@@ -12,14 +14,23 @@
 #include "lib.h"
 #include "my.h"
 
+void handler(int sig)
+{
+    my_putstr("enemy connected\n");
+}
+
 int connect_player_one(void)
 {
+    struct sigaction prepaSignal;
     pid_t pid = getpid();
 
     my_printf("my_pid:  %d\n", pid);
     my_putstr("Waiting for enemy connection...\n\n");
+    sigemptyset(&prepaSignal.sa_mask);
+    prepaSignal.sa_handler = &handler;
+    prepaSignal.sa_flags = 0;
+    sigaction(SIGUSR1, &prepaSignal, NULL);
     pause();
-    my_putstr("enemy conncted\n");
     return (0);
 }
 
@@ -28,10 +39,10 @@ int connect_player_two(char **argv)
     pid_t pid_1 = 0;
     pid_t pid_2 = getpid();
 
-    pid_1 = my_atoi(argv[1]);
     my_printf("my_pid:  %d\n", pid_2);
+    pid_1 = my_atoi(argv[1]);
     kill(pid_1, SIGUSR1);
-    my_putstr("successfully connected\n");
+    my_putstr("successfully conected\n");
     return (0);
 }
 
