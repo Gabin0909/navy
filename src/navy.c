@@ -42,5 +42,7 @@ int navy(int argc, char **argv)
     info.empty_map = create_map();
     if (file_error(argc, argv) != 0)
         return (84);
+    if (player_connection(argc, argv) != 0)
+        return (84);
     return (0);
 }
