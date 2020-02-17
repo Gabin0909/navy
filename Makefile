@@ -15,7 +15,9 @@ NAME	=	navy
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS += -W -Wall -Wextra -pedantic -I./include
+CFLAGS += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy
+
+CSFML += -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
 
 DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include
 
@@ -28,7 +30,7 @@ all:	$(NAME)
 $(NAME): 	$(OBJ)
 	make -C lib
 	@echo -e "\033[1;35m[Compiling sources with library...]\033[0;13m"
-	gcc -o $(NAME) $(SRC) -L./lib -lmy $(CFLAGS)
+	gcc -o $(NAME) $(SRC) $(CFLAGS)
 	@echo -e "\033[1;32m[Compilation Completed !]\033[0;13m"
 
 clean:
