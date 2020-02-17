@@ -5,8 +5,8 @@
 ** check_file
 */
 
- #include <stdlib.h>
- #include "lib.h"
+#include <stdlib.h>
+#include "lib.h"
 
 int check_boat_length(char ***boat)
 {

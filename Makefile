@@ -1,5 +1,5 @@
 ##
-## EPITECH PROJECT, 2018
+## EPITECH PROJECT, 2019
 ## Makefile
 ## File description:
 ## Makefile
@@ -7,6 +7,7 @@
 
 SRC		=	src/main.c			\
 			src/navy.c			\
+			src/create_map.c	\
 			src/file_error.c	\
 			src/check_file.c 	\
 
@@ -19,8 +20,6 @@ CFLAGS += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy
 CSFML += -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
 
 DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include
-
-DEBUG_CSFML += -W -Wall -Wextra -pedantic -g3 -I./include $(CSFML)
 
 TEST	=	lib/test.c
 
@@ -51,10 +50,6 @@ re: fclean all
 debug:	fclean
 	make -C lib/
 	gcc -o $(NAME) $(SRC) -L./lib/ -I./include -lmy $(DEBUG)
-
-debug_csfml:	fclean
-	make -C lib/
-	gcc -o $(NAME) $(SRC) -L./lib/ -I./include -lmy $(DEBUG_CSFML)
 
 test_run:
 	make -C ./tests/ test_run

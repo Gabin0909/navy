@@ -5,6 +5,7 @@
 ** navy.c
 */
 
+#include "struct.h"
 #include "lib.h"
 #include "my.h"
 
@@ -30,12 +31,15 @@ int error_handling(int argc)
 
 int navy(int argc, char **argv)
 {
+    info_t info;
+
     if (argc == 2 && (argv[1][0] == '-' && argv[1][1] == 'h')) {
         usage();
         return (1);
     }
     if (error_handling(argc) == 84)
         return (84);
+    info.empty_map = create_map();
     if (file_error(argc, argv) != 0)
         return (84);
     return (0);
