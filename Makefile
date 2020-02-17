@@ -5,9 +5,9 @@
 ## Makefile
 ##
 
-SRC		=	src/main.c\
-			src/navy.c\
-			src/create_map.c\
+SRC		=	src/main.c			\
+			src/navy.c			\
+			src/create_map.c	\
 			src/file_error.c	\
 			src/check_file.c 	\
 
@@ -39,8 +39,6 @@ clean:
 	rm -f vgcore.*
 
 fclean: clean
-		rm -f $(NAME)
-		rm -f lib/libmy.a
 	rm -f $(NAME)
 	rm -f lib/libmy.a
 
