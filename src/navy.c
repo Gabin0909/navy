@@ -22,7 +22,7 @@ void usage(void)
 
 int error_handling(int argc)
 {
-    if (argc != 3) {
+    if (argc != 3 && argc != 2) {
         my_putstr("Invalid arguments: ./navy -h for more help.\n");
         return (84);
     }
@@ -40,5 +40,7 @@ int navy(int argc, char **argv)
     if (error_handling(argc) == 84)
         return (84);
     info.empty_map = create_map();
+    if (file_error(argc, argv) != 0)
+        return (84);
     return (0);
 }

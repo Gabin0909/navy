@@ -9,6 +9,10 @@ SRC		=	src/main.c\
 			src/navy.c\
 			src/create_map.c\
 			src/check_connection.c\
+SRC		=	src/main.c			\
+			src/navy.c			\
+			src/file_error.c	\
+			src/check_file.c 	\
 
 NAME	=	navy
 
@@ -16,7 +20,9 @@ OBJ	=	$(SRC:.c=.o)
 
 CFLAGS += -W -Wall -Wextra -pedantic -I./include
 
-DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include $(CSFML)
+DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include
+
+DEBUG_CSFML += -W -Wall -Wextra -pedantic -g3 -I./include $(CSFML)
 
 TEST	=	lib/test.c
 
@@ -25,25 +31,37 @@ all:	$(NAME)
 $(NAME):	$(OBJ)
 		make -C lib
 		gcc -o $(NAME) $(SRC) -L./lib -lmy $(CFLAGS) $(CSFML)
+$(NAME): 	$(OBJ)
+	make -C lib
+	@echo -e "\033[1;35m[Compiling sources with library...]\033[0;13m"
+	gcc -o $(NAME) $(SRC) -L./lib -lmy $(CFLAGS)
+	@echo -e "\033[1;32m[Compilation Completed !]\033[0;13m"
 
 clean:
-		rm -f lib/*.o
-		rm -f $(OBJ)
-		rm -f a.out
-		rm -f vgcore.*
+	@echo -e "\033[1;31m[Deleting files...]\033[0;13m"
+	rm -f lib/*.o
+	rm -f $(OBJ)
+	rm -f a.out
+	rm -f vgcore.*
 
 fclean: clean
 		rm -f $(NAME)
 		rm -f lib/libmy.a
+	rm -f $(NAME)
+	rm -f lib/libmy.a
 
 test_fclean: clean
-		make -C ./tests/ fclean
+	make -C ./tests/ fclean
 
 re: fclean all
 
 debug:	fclean
-		make -C lib/
-		gcc -o $(NAME) $(SRC) -L./lib/ -I./include -lmy $(DEBUG)
+	make -C lib/
+	gcc -o $(NAME) $(SRC) -L./lib/ -I./include -lmy $(DEBUG)
+
+debug_csfml:	fclean
+	make -C lib/
+	gcc -o $(NAME) $(SRC) -L./lib/ -I./include -lmy $(DEBUG_CSFML)
 
 test_run:
-		make -C ./tests/ test_run
+	make -C ./tests/ test_run

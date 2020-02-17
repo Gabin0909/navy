@@ -82,6 +82,8 @@ char **my_str_to_word_array(char *str, char **map, char separator)
     int rows = 0;
     int colmn = 0;
 
+    if (str == NULL)
+        return (NULL);
     colmn = count_columns(str, separator);
     rows = count_rows(str, separator);
     map = malloc(sizeof(char *) * (rows + 1));
