@@ -8,9 +8,6 @@
 SRC		=	src/main.c\
 			src/navy.c\
 			src/create_map.c\
-			src/check_connection.c\
-SRC		=	src/main.c			\
-			src/navy.c			\
 			src/file_error.c	\
 			src/check_file.c 	\
 
@@ -28,9 +25,6 @@ TEST	=	lib/test.c
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
-		make -C lib
-		gcc -o $(NAME) $(SRC) -L./lib -lmy $(CFLAGS) $(CSFML)
 $(NAME): 	$(OBJ)
 	make -C lib
 	@echo -e "\033[1;35m[Compiling sources with library...]\033[0;13m"

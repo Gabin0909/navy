@@ -10,6 +10,6 @@
 
 typedef struct info_s {
     char **empty_map;
-}info_t;
+} info_t;
 
 #endif

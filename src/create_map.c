@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "lib.h"
 
-char **fill_map(char **map)
+char **map_fill(char **map)
 {
     map[0] = " |A B C D E F G H";
     map[1] = "-+---------------";
@@ -47,10 +47,6 @@ char **create_map(void)
     char **map = NULL;
 
     map = malloc_empty_map(map);
-    map = fill_map(map);
-    for (int i = 0; map[i] != NULL; i++) {
-        my_putstr(map[i]);
-        my_putchar('\n');
-    }
+    map = map_fill(map);
     return (map);
 }
