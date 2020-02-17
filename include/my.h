@@ -12,8 +12,9 @@
 
 int navy(int , char **);
 char **create_map(void);
-int navy(int argc, char **argv);
-int file_error(int ac, char **av);
-int check_file(char ***boat);
+int navy(int, char **);
+int file_error(int, char **);
+int check_file(char ***);
+int player_connection(int, char **, p_info_t);
 
 #endif

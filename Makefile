@@ -8,8 +8,9 @@
 SRC		=	src/main.c\
 			src/navy.c\
 			src/create_map.c\
-			src/file_error.c	\
-			src/check_file.c 	\
+			src/file_error.c\
+			src/check_file.c\
+			src/player_connection.c\
 
 NAME	=	navy
 

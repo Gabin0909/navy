@@ -32,6 +32,7 @@ int error_handling(int argc)
 int navy(int argc, char **argv)
 {
     info_t info;
+    p_info_t p_info;
 
     if (argc == 2 && (argv[1][0] == '-' && argv[1][1] == 'h')) {
         usage();
@@ -41,6 +42,8 @@ int navy(int argc, char **argv)
         return (84);
     info.empty_map = create_map();
     if (file_error(argc, argv) != 0)
+        return (84);
+    if (player_connection(argc, argv, p_info) != 0)
         return (84);
     return (0);
 }

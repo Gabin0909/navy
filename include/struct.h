@@ -12,4 +12,9 @@ typedef struct info_s {
     char **empty_map;
 } info_t;
 
+typedef struct player_info_s {
+    int player1_pid;
+    int player2_pid;
+}p_info_t;
+
 #endif
