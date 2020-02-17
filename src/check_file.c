@@ -32,11 +32,22 @@ int check_miss_arg_split(char ***boat)
             return (1);
         b = 0;
     }
+    return (0);
 }
 
-int check_wrong_arg_value(char **boat, int i)
+int check_wrong_arg_value(char ***boat, int i)
 {
-
+    for (int j = 1; boat[i][j] != NULL; j++) {
+        if (my_strlen(boat[i][j]) != 2)
+            return (1);
+        for (int b = 0; boat[i][j][b] != '\0'; b++) {
+            if (boat[i][j][0] < 'A' || boat[i][j][0] > 'H')
+                return (1);
+            if (boat[i][j][1] < '0' || boat[i][j][1] > '9')
+                return (1);
+        }
+    }
+    return (0);
 }
 
 int check_file(char ***boat)
@@ -51,7 +62,7 @@ int check_file(char ***boat)
     if (check_boat_length(boat) != 0)
         return (1);
     for (int j = 0; boat[j] != NULL; j++) {
-        if (check_wrong_arg_value(boat, i) != 0)
+        if (check_wrong_arg_value(boat, j) != 0)
             return (1);
     }
     return (0);

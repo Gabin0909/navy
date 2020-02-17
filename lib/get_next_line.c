@@ -13,7 +13,7 @@
 #include "my.h"
 #include "get_next_line.h"
 
-int my_strlen(char const *str)
+int m_strlen(char const *str)
 {
     int i = 0;
 
@@ -38,7 +38,7 @@ char *add(int *buff_count, int i, char *line, char *buffer)
     char *returned = NULL;
 
     if (line != 0)
-        init_length = my_strlen(line);
+        init_length = m_strlen(line);
     else
         init_length = 0;
     returned = malloc(sizeof(*returned) * (init_length + i + 1));
