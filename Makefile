@@ -17,8 +17,6 @@ OBJ	=	$(SRC:.c=.o)
 
 CFLAGS += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy
 
-CSFML += -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
-
 DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include
 
 TEST	=	lib/test.c
