@@ -11,7 +11,7 @@
 #define MY_H
 
 int navy(int , char **);
-void usage(void);
+int usage(int argc, char **argv);
 int error_handling(int);
 char **create_map(void);
 int navy(int, char **);
