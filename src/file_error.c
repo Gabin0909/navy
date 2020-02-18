@@ -46,8 +46,10 @@ int file_error(int ac, char **av)
     int fd = 0;
 
     if (ac == 2) {
-        if ((fd = open(av[1], O_RDONLY)) == -1)
+        if ((fd = open(av[1], O_RDONLY)) == -1) {
+            my_putstr("File does not exist.\n");
             return (1);
+        }
         else
             return (check_inside_file(fd));
     } else if (ac == 3) {
