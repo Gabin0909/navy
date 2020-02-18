@@ -11,7 +11,7 @@ int error_handling(int argc)
 {
     if (argc != 3 && argc != 2) {
         my_putstr("Invalid arguments: ./navy -h for more help.\n");
-        return (84);
+        return (1);
     }
     return (0);
 }

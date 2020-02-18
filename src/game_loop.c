@@ -5,28 +5,10 @@
 ** game_loop->c
 */
 
+#include <stdlib.h>
 #include "lib.h"
 #include "my.h"
 #include "struct.h"
-#include <stdlib.h>
-
-void print_p1_turn(info_t *info)
-{
-    my_putstr("my_positions:\n");
-    print_double_char(info->p1_map);
-    my_putstr("\nenemy's positions:\n");
-    print_double_char(info->p1_enemy_map);
-    my_putchar('\n');
-}
-
-void print_p2_turn(info_t *info)
-{
-    my_putstr("my_positions:\n");
-    print_double_char(info->p2_map);
-    my_putstr("\nenemy's positions:\n");
-    print_double_char(info->p2_enemy_map);
-    my_putchar('\n');
-}
 
 void game_loop(int argc, info_t *info)
 {

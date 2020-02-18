@@ -5,15 +5,18 @@
 ## Makefile
 ##
 
-SRC		=	src/main.c\
-			src/navy.c\
-			src/usage.c\
-			src/error_handling.c\
-			src/create_map.c\
-			src/file_error.c\
-			src/check_file.c\
-			src/player_connection.c\
-			src/game_loop.c\
+SRC		=	src/main.c						\
+			src/navy.c						\
+			src/usage.c						\
+			src/error_handling.c			\
+			src/create_map.c				\
+			src/file_error.c				\
+			src/check_file.c				\
+			src/player_connection.c			\
+			src/game_loop.c					\
+			src/print_players_turn.c		\
+			src/put_file_in_triple_array.c	\
+			src/init_struct.c 				\
 
 NAME	=	navy
 
