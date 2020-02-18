@@ -13,6 +13,7 @@ SRC		=	src/main.c\
 			src/file_error.c\
 			src/check_file.c\
 			src/player_connection.c\
+			src/game_loop.c\
 
 NAME	=	navy
 
