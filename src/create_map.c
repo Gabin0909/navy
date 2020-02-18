@@ -53,11 +53,10 @@ char **create_map(void)
     return (map);
 }
 
-info_t load_maps(info_t info)
+void load_maps(info_t *info)
 {
-    info.p1_map = create_map();
-    info.p1_enemy_map = create_map();
-    info.p2_map = create_map();
-    info.p2_enemy_map = create_map();
-    return (info);
+    info->p1_map = create_map();
+    info->p1_enemy_map = create_map();
+    info->p2_map = create_map();
+    info->p2_enemy_map = create_map();
 }

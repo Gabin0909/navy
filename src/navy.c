@@ -10,13 +10,12 @@
 #include "my.h"
 #include "struct.h"
 
-info_t init_struct(info_t info)
+void init_struct(info_t *info)
 {
-    info.p1_enemy_map = NULL;
-    info.p1_map = NULL;
-    info.p2_enemy_map = NULL;
-    info.p2_map = NULL;
-    return (info);
+    info->p1_enemy_map = NULL;
+    info->p1_map = NULL;
+    info->p2_enemy_map = NULL;
+    info->p2_map = NULL;
 }
 
 int navy(int argc, char **argv)
@@ -29,8 +28,8 @@ int navy(int argc, char **argv)
     }
     if (error_handling(argc) == 84)
         return (84);
-    init_struct(info);
-    load_maps(info);
+    init_struct(&info);
+    load_maps(&info);
     if (file_error(argc, argv) != 0)
         return (84);
     if (player_connection(argc, argv) != 0)
