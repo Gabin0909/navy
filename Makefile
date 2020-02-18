@@ -7,6 +7,8 @@
 
 SRC		=	src/main.c\
 			src/navy.c\
+			src/usage.c\
+			src/error_handling.c\
 			src/create_map.c\
 			src/file_error.c\
 			src/check_file.c\
@@ -16,7 +18,7 @@ NAME	=	navy
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy
+CFLAGS += -W -Wall -Wextra -pedantic -I./include
 
 DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include
 
@@ -27,7 +29,7 @@ all:	$(NAME)
 $(NAME): 	$(OBJ)
 	make -C lib
 	@echo -e "\033[1;35m[Compiling sources with library...]\033[0;13m"
-	gcc -o $(NAME) $(SRC) $(CFLAGS)
+	gcc -o $(NAME) $(SRC) $(CFLAGS) -L./lib -lmy
 	@echo -e "\033[1;32m[Compilation Completed !]\033[0;13m"
 
 clean:

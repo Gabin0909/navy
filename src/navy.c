@@ -5,28 +5,18 @@
 ** navy.c
 */
 
-#include "struct.h"
+#include <stdio.h>
 #include "lib.h"
 #include "my.h"
+#include "struct.h"
 
-void usage(void)
+info_t init_struct(info_t info)
 {
-    my_putstr("USAGE\n");
-    my_putstr("      ./navy [first_player_pid] navy_positions\n");
-    my_putstr("Description\n");
-    my_putstr("     first_player_pid:  only for the 2nd player. pid pf\
-    the first player\n");
-    my_putstr("navy_positions:  fiel representing the positions of the\
-    ships.\n");
-}
-
-int error_handling(int argc)
-{
-    if (argc != 3 && argc != 2) {
-        my_putstr("Invalid arguments: ./navy -h for more help.\n");
-        return (84);
-    }
-    return (0);
+    info.p1_enemy_map = NULL;
+    info.p1_map = NULL;
+    info.p2_enemy_map = NULL;
+    info.p2_map = NULL;
+    return (info);
 }
 
 int navy(int argc, char **argv)
@@ -39,7 +29,8 @@ int navy(int argc, char **argv)
     }
     if (error_handling(argc) == 84)
         return (84);
-    info.empty_map = create_map();
+    init_struct(info);
+    load_maps(info);
     if (file_error(argc, argv) != 0)
         return (84);
     if (player_connection(argc, argv) != 0)

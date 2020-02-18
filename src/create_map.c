@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "struct.h"
+#include "my.h"
 #include "lib.h"
 
 char **map_fill(char **map)
@@ -49,4 +51,13 @@ char **create_map(void)
     map = malloc_empty_map(map);
     map = map_fill(map);
     return (map);
+}
+
+info_t load_maps(info_t info)
+{
+    info.p1_map = create_map();
+    info.p1_enemy_map = create_map();
+    info.p2_map = create_map();
+    info.p2_enemy_map = create_map();
+    return (info);
 }
