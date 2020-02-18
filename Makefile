@@ -21,7 +21,7 @@ OBJ	=	$(SRC:.c=.o)
 
 CFLAGS += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy
 
-DEBUG += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy -g3
+DEBUG += $(CFLAGS) -g3
 
 TEST	=	lib/test.c
 
