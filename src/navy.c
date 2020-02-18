@@ -32,5 +32,6 @@ int navy(int argc, char **argv)
         return (84);
     if (player_connection(argc, argv) != 0)
         return (84);
+    game_loop(argc, &info);
     return (0);
 }
