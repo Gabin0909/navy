@@ -19,9 +19,9 @@ NAME	=	navy
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS += -W -Wall -Wextra -pedantic -I./include
+CFLAGS += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy
 
-DEBUG += -W -Wall -Wextra -pedantic -g3 -I./include
+DEBUG += -W -Wall -Wextra -pedantic -I./include -L./lib -lmy -g3
 
 TEST	=	lib/test.c
 
@@ -30,7 +30,7 @@ all:	$(NAME)
 $(NAME): 	$(OBJ)
 	make -C lib
 	@echo -e "\033[1;35m[Compiling sources with library...]\033[0;13m"
-	gcc -o $(NAME) $(SRC) $(CFLAGS) -L./lib -lmy
+	gcc -o $(NAME) $(SRC) $(CFLAGS)
 	@echo -e "\033[1;32m[Compilation Completed !]\033[0;13m"
 
 clean:
@@ -51,7 +51,9 @@ re: fclean all
 
 debug:	fclean
 	make -C lib/
-	gcc -o $(NAME) $(SRC) -L./lib/ -I./include -lmy $(DEBUG)
+	@echo -e "\033[1;35m[Compiling for debug...]\033[0;13m"
+	gcc -o $(NAME) $(SRC) $(DEBUG)
+	@echo -e "\033[1;32m[Compilation Completed !]\033[0;13m"
 
 test_run:
 	make -C ./tests/ test_run
