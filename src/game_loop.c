@@ -13,30 +13,18 @@
 void print_p1_turn(info_t *info)
 {
     my_putstr("my_positions:\n");
-    for (int i = 0; info->p1_map[i] != NULL; i++) {
-        my_putstr(info->p1_map[i]);
-        my_putchar('\n');
-    }
+    print_double_char(info->p1_map);
     my_putstr("\nenemy's positions:\n");
-    for (int i = 0; info->p1_enemy_map[i] != NULL; i++) {
-        my_putstr(info->p1_enemy_map[i]);
-        my_putchar('\n');
-    }
+    print_double_char(info->p1_enemy_map);
     my_putchar('\n');
 }
 
 void print_p2_turn(info_t *info)
 {
     my_putstr("my_positions:\n");
-    for (int i = 0; info->p2_map[i] != NULL; i++) {
-        my_putstr(info->p2_map[i]);
-        my_putchar('\n');
-    }
+    print_double_char(info->p2_map);
     my_putstr("\nenemy's positions:\n");
-    for (int i = 0; info->p2_enemy_map[i] != NULL; i++) {
-        my_putstr(info->p2_enemy_map[i]);
-        my_putchar('\n');
-    }
+    print_double_char(info->p2_enemy_map);
     my_putchar('\n');
 }
 
