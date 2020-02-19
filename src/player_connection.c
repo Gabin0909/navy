@@ -46,11 +46,13 @@ int connect_player_two(char **argv)
     return (0);
 }
 
-int player_connection(int argc, char **argv)
+int player_connection(int argc, char **argv, info_t *info)
 {
     if (argc == 2)
         connect_player_one();
-    if (argc == 3)
+    if (argc == 3) {
         connect_player_two(argv);
+        send_pid(info);
+    }
     return (0);
 }

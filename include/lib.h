@@ -31,5 +31,7 @@ char *get_next_line(int fd);
 void free_triple_array(char ***array);
 char *my_itoa(int nb);
 int my_atoi_simpl(char ch);
+int *my_getbinary(int nbr, int *binary);
+int get_binary_size(int nbr);
 
 #endif /* !LIB_H_ */

@@ -28,6 +28,8 @@ SRC	=	    my_putchar.c				\
 			free_double_char.c 			\
 			free_triple_array.c 		\
 			get_next_line.c 			\
+			get_binary_size.c			\
+			my_getbinary.c				\
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -19,6 +19,7 @@ SRC		=	src/main.c						\
 			src/init_struct.c 				\
 			src/load_boat.c 				\
 			src/free_all.c 					\
+			src/send_pid.c					\
 
 NAME	=	navy
 
