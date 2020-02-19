@@ -29,5 +29,7 @@ char **my_str_to_word_array(char *str, char **map, char separator);
 void print_double_char(char **d_str);
 char *get_next_line(int fd);
 void free_triple_array(char ***array);
+char *my_itoa(int nb);
+int my_atoi_simpl(char ch);
 
 #endif /* !LIB_H_ */

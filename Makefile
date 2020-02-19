@@ -17,6 +17,7 @@ SRC		=	src/main.c						\
 			src/print_players_turn.c		\
 			src/put_file_in_triple_array.c	\
 			src/init_struct.c 				\
+			src/load_boat.c 				\
 
 NAME	=	navy
 

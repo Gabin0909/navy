@@ -22,6 +22,8 @@ SRC	=	    my_putchar.c				\
 			my_str_isnum.c 				\
 			my_str_isnumalpha.c 		\
 			my_strcat.c 				\
+			my_itoa.c 					\
+			my_atoi_simpl_char.c 		\
 			print_double_char.c 		\
 			free_double_char.c 			\
 			free_triple_array.c 		\
