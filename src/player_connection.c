@@ -14,9 +14,13 @@
 #include "lib.h"
 #include "my.h"
 
-void handler(int sig)
+extern int enemy_pid;
+
+void handler(int sig, siginfo_t *siginfo, void *context)
 {
-    my_putstr("enemy connected\n");
+    (void) sig;
+    (void) context;
+    my_putstr("enemy connected\n\n");
 }
 
 int connect_player_one(void)
@@ -27,8 +31,8 @@ int connect_player_one(void)
     my_printf("my_pid:  %d\n", pid);
     my_putstr("Waiting for enemy connection...\n\n");
     sigemptyset(&prepaSignal.sa_mask);
-    prepaSignal.sa_handler = &handler;
-    prepaSignal.sa_flags = 0;
+    prepaSignal.sa_sigaction = &handler;
+    prepaSignal.sa_flags = SA_SIGINFO;
     sigaction(SIGUSR1, &prepaSignal, NULL);
     pause();
     return (0);
@@ -38,11 +42,14 @@ int connect_player_two(char **argv)
 {
     pid_t pid_1 = 0;
     pid_t pid_2 = getpid();
+    int status = 0;
 
-    my_printf("my_pid:  %d\n", pid_2);
     pid_1 = my_atoi(argv[1]);
-    kill(pid_1, SIGUSR1);
-    my_putstr("successfully connected\n");
+    status = kill(pid_1, SIGUSR1);
+    if (status != 0)
+        return (84);
+    my_printf("my_pid:  %d\n", pid_2);
+    my_putstr("successfully connected\n\n");
     return (0);
 }
 
@@ -52,7 +59,6 @@ int player_connection(int argc, char **argv, info_t *info)
         connect_player_one();
     if (argc == 3) {
         connect_player_two(argv);
-        send_pid(info);
     }
     return (0);
 }

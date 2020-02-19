@@ -10,6 +10,8 @@
 #include "my.h"
 #include "struct.h"
 
+extern int enemy_pid;
+
 int navy(int argc, char **argv)
 {
     info_t info;

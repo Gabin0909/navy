@@ -26,6 +26,5 @@ char ***put_file_in_triple_array(char ***boat_pos, int fd);
 void init_struct(info_t *info);
 void load_boat(int argc, info_t *info);
 void free_all(info_t *info);
-void send_pid(info_t *info);
 
 #endif
