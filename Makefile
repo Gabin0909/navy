@@ -18,6 +18,7 @@ SRC		=	src/main.c						\
 			src/put_file_in_triple_array.c	\
 			src/init_struct.c 				\
 			src/load_boat.c 				\
+			src/free_all.c 					\
 
 NAME	=	navy
 

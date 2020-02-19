@@ -26,6 +26,6 @@ int navy(int argc, char **argv)
     load_maps(&info);
     load_boat(argc, &info);
     game_loop(argc, &info);
-    free_triple_array(info.boat_pos);
+    free_all(&info);
     return (0);
 }

@@ -42,7 +42,7 @@ int connect_player_two(char **argv)
     my_printf("my_pid:  %d\n", pid_2);
     pid_1 = my_atoi(argv[1]);
     kill(pid_1, SIGUSR1);
-    my_putstr("successfully conected\n");
+    my_putstr("successfully connected\n");
     return (0);
 }
 
