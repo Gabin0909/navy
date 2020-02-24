@@ -17,7 +17,7 @@ char **create_map(void);
 int navy(int, char **);
 int file_error(int ac, char **av, info_t *info);
 int check_file(char ***);
-int player_connection(int, char **, info_t *);
+int player_connection(int, char **);
 void load_maps(info_t *);
 void game_loop(int, info_t *);
 void print_p1_turn(info_t *info);

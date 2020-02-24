@@ -7,8 +7,6 @@
 
 #include "my.h"
 
-int enemy_pid;
-
 int main(int argc, char **argv)
 {
     return (navy(argc, argv));

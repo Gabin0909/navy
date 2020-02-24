@@ -21,4 +21,8 @@ typedef struct info_s {
     char ***boat_pos;
 }info_t;
 
+typedef struct global_s {
+    int enemy_pid;
+}global_t;
+
 #endif

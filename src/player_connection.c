@@ -14,12 +14,13 @@
 #include "lib.h"
 #include "my.h"
 
-extern int enemy_pid;
+global_t global;
 
 void handler(int sig, siginfo_t *siginfo, void *context)
 {
     (void) sig;
     (void) context;
+    global.enemy_pid = siginfo->si_pid;
     my_putstr("enemy connected\n\n");
 }
 
@@ -53,12 +54,11 @@ int connect_player_two(char **argv)
     return (0);
 }
 
-int player_connection(int argc, char **argv, info_t *info)
+int player_connection(int argc, char **argv)
 {
     if (argc == 2)
         connect_player_one();
-    if (argc == 3) {
+    if (argc == 3)
         connect_player_two(argv);
-    }
     return (0);
 }

@@ -10,7 +10,7 @@
 #include "my.h"
 #include "struct.h"
 
-extern int enemy_pid;
+global_t global;
 
 int navy(int argc, char **argv)
 {
@@ -23,7 +23,7 @@ int navy(int argc, char **argv)
         return (84);
     if (file_error(argc, argv, &info) != 0)
         return (84);
-    if (player_connection(argc, argv, &info) != 0)
+    if (player_connection(argc, argv) != 0)
         return (84);
     load_maps(&info);
     load_boat(argc, &info);
