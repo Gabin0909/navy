@@ -60,5 +60,5 @@ int player_connection(int argc, char **argv)
         connect_player_one();
     if (argc == 3)
         connect_player_two(argv);
-    return (0);
+        return (0);
 }
