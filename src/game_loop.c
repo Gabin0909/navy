@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "lib.h"
 #include "my.h"
 #include "struct.h"
@@ -19,8 +20,14 @@ void wait_attack(void)
 
 void do_attack(void)
 {
+    char *atk_pos = NULL;
+    int *binary = 0;
+
     my_putstr("attack: ");
-    get_next_line(0);
+    atk_pos = get_next_line(0);
+    if (check_attack_input(atk_pos) != 0)
+        do_attack();
+    binary = my_getbinary(atk_pos[0], binary);
 }
 
 void game_loop(int argc, info_t *info)
