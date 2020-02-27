@@ -11,9 +11,7 @@
 
 void free_all(info_t *info)
 {
-    free_double_char(info->p1_enemy_map);
-    free_double_char(info->p1_map);
-    free_double_char(info->p2_enemy_map);
-    free_double_char(info->p2_map);
+    free_double_char(info->enemy_map);
+    free_double_char(info->map);
     free_triple_array(info->boat_pos);
 }

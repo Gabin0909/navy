@@ -21,6 +21,7 @@ SRC		=	src/main.c						\
 			src/free_all.c 					\
 			src/check_attack_input.c 		\
 			src/manage_attack.c				\
+			src/attack.c 					\
 
 NAME	=	navy
 
