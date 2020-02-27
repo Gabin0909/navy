@@ -5,61 +5,50 @@
 ** modify_map
 */
 
+#include <stdlib.h>
 #include "my.h"
 #include "lib.h"
 
-void modify_player1_maps(info_t *info)
+void modify_ennemy_map(info_t *info, char **str)
 {
     int i = 0;
     int j = 0;
 
-    for (; info->p1_map[0][j] != info->input[0]; j++);
-    for (; info->p1_map[i][0] != info->input[1]; i++);
-    if (info->p1_map[i][j] != '.') {
-        info->atk = HIT;
-        info->p1_map[i][j] = 'x';
-    } else {
-        info->atk = MISS;
-        info->p1_map[i][j] = 'o';
-    }
-    i = 0;
-    j = 0;
-    for (; info->p1_enemy_map[0][j] != info->input[0]; j++);
-    for (; info->p1_enemy_map[i][0] != info->input[1]; i++);
+    for (; str[0][j] != info->input[0]; j++);
+    for (; str[i][0] != info->input[1]; i++);
     if (info->atk == HIT)
-        info->p1_enemy_map[i][j] = 'x';
+        str[i][j] = 'x';
     else
-        info->p1_enemy_map[i][j] = 'o';
+        str[i][j] = 'o';
 }
 
-void modify_player2_maps(info_t *info)
+void modify_player_map(info_t *info, char **str)
 {
     int i = 0;
     int j = 0;
 
-    for (; info->p2_map[0][j] != info->input[0]; j++);
-    for (; info->p2_map[i][0] != info->input[1]; i++);
-    if (info->p2_map[i][j] != '.') {
+    for (; str[0][j] != info->input[0]; j++);
+    for (; str[i][0] != info->input[1]; i++);
+    if (str[i][j] != '.') {
         info->atk = HIT;
-        info->p2_map[i][j] = 'x';
+        str[i][j] = 'x';
     } else {
         info->atk = MISS;
-        info->p2_map[i][j] = 'o';
+        str[i][j] = 'o';
     }
-    i = 0;
-    j = 0;
-    for (; info->p2_enemy_map[0][j] != info->input[0]; j++);
-    for (; info->p2_enemy_map[i][0] != info->input[1]; i++);
-    if (info->atk == HIT)
-        info->p2_enemy_map[i][j] = 'x';
-    else
-        info->p2_enemy_map[i][j] = 'o';
 }
 
 void modify_maps(int ac, info_t *info)
 {
-    if (ac ==  2)
-        modify_player1_maps(info);
-    if (ac == 3)
-        modify_player2_maps(info);
+    if (info->input == NULL)
+        return;
+    if (ac == 2) {
+        modify_ennemy_map(info, info->p1_enemy_map);
+        modify_player_map(info, info->p1_map);
+    } else if (ac == 3) {
+        modify_ennemy_map(info, info->p2_enemy_map);
+        modify_player_map(info, info->p2_map);
+    }
+
+
 }

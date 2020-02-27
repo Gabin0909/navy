@@ -22,6 +22,7 @@ int game_loop(int argc, info_t *info)
             if (do_attack() != 0)
                 return (84);
             wait_attack(info);
+            modify_maps(argc, info);
         }
         if (argc == 3) {
             print_p2_turn(info);
