@@ -20,7 +20,7 @@ void wait_attack(info_t *info)
     unsigned int letter = 0;
     unsigned int number = 0;
 
-    info->input = malloc(sizeof(char) * 2);
+    info->input = malloc(sizeof(char) * 3);
     binary = malloc(sizeof(int) * 13);
     my_putstr("waiting for enemy's attack...\n");
     for (int i = 0; i != 13; i++) {
@@ -30,6 +30,7 @@ void wait_attack(info_t *info)
     number = my_tabint_to_int(binary, 6, 12);
     info->input[0] = letter;
     info->input[1] = number;
+    info->input[2] = '\0';
 }
 
 int do_attack(void)
