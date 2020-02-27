@@ -16,17 +16,26 @@
 
 global_t global;
 
+int *fill_binary(int *binary)
+{
+    static int i = 0;
+
+    binary[i] = global.var;
+    i++;
+    return (binary);
+}
+
 void receive_0(int sig)
 {
     (void) sig;
-    my_putchar('0');
+    global.var = 0;
     return;
 }
 
 void receive_1(int sig)
 {
     (void) sig;
-    my_putchar('1');
+    global.var = 1;
     return;
 }
 
@@ -36,17 +45,17 @@ void send_attack(int *binary, char atk)
 
     for (; len > -1; len--) {
         if (binary[len] == 0) {
-            kill(global.enemy_pid, SIGUSR1);
+            kill(global.var, SIGUSR1);
             usleep(4000);
         }
         else if (binary[len] == 1) {
-            kill(global.enemy_pid, SIGUSR2);
+            kill(global.var, SIGUSR2);
             usleep(4000);
         }
     }
 }
 
-char *receive_attack(void)
+int *receive_attack(int *binary)
 {
     struct sigaction signal0;
     struct sigaction signal1;
@@ -60,5 +69,6 @@ char *receive_attack(void)
     sigaction(SIGUSR1, &signal0, NULL);
     sigaction(SIGUSR2, &signal1, NULL);
     pause();
-    return (NULL);
+    binary = fill_binary(binary);
+    return (binary);
 }

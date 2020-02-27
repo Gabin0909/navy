@@ -16,10 +16,22 @@ global_t global;
 
 void wait_attack(void)
 {
+    int *binary = NULL;
+    unsigned int letter = 0;
+    unsigned int number = 0;
+    char *input = NULL;
+
+    input = malloc(sizeof(char) * 2);
+    binary = malloc(sizeof(int) * 13);
     my_putstr("waiting for enemy's attack...\n");
     for (int i = 0; i != 13; i++) {
-        receive_attack();
+        binary = receive_attack(binary);
     }
+    letter = my_tabint_to_int(binary, -1, 6);
+    number = my_tabint_to_int(binary, 6, 12);
+    input[0] = letter;
+    input[1] = number;
+    my_printf("%s\n", input);
 }
 
 int do_attack(void)

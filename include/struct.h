@@ -13,11 +13,12 @@ typedef struct info_s {
     char **enemy_map;
     int win_loose;
     int p1_pid;
+    int enemy_pid;
     char ***boat_pos;
 }info_t;
 
 typedef struct global_s {
-    int enemy_pid;
+    int var;
 }global_t;
 
 #endif

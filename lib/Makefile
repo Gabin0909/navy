@@ -30,6 +30,7 @@ SRC	=	    my_putchar.c				\
 			get_next_line.c 			\
 			get_binary_size.c			\
 			my_getbinary.c				\
+			my_tabint_to_int.c			\
 
 OBJ	=	$(SRC:.c=.o)
 
