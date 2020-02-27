@@ -8,6 +8,28 @@
 #include "my.h"
 #include "lib.h"
 
+void check_hit_p1(info_t *info, int i, int j)
+{
+    if (info->atk == HIT) {
+        my_printf("%s: hit\n\n", info->input);
+    }
+    else {
+        my_printf("%s: missed\n\n", info->input);
+    }
+}
+
+void check_hit_p2(info_t *info, int i, int j)
+{
+    if (info->atk == HIT) {
+        info->p2_enemy_map[i][j] = 'x';
+        my_printf("%s: hit\n\n", info->input);
+    }
+    else {
+        info->p2_enemy_map[i][j] = 'o';
+        my_printf("%s: missed\n\n", info->input);
+    }
+}
+
 void modify_player1_maps(info_t *info)
 {
     int i = 0;
@@ -26,10 +48,7 @@ void modify_player1_maps(info_t *info)
     j = 0;
     for (; info->p1_enemy_map[0][j] != info->input[0]; j++);
     for (; info->p1_enemy_map[i][0] != info->input[1]; i++);
-    if (info->atk == HIT)
-        info->p1_enemy_map[i][j] = 'x';
-    else
-        info->p1_enemy_map[i][j] = 'o';
+    check_hit_p1(info, i, j);
 }
 
 void modify_player2_maps(info_t *info)
@@ -50,10 +69,7 @@ void modify_player2_maps(info_t *info)
     j = 0;
     for (; info->p2_enemy_map[0][j] != info->input[0]; j++);
     for (; info->p2_enemy_map[i][0] != info->input[1]; i++);
-    if (info->atk == HIT)
-        info->p2_enemy_map[i][j] = 'x';
-    else
-        info->p2_enemy_map[i][j] = 'o';
+    check_hit_p2(info, i, j);
 }
 
 void modify_maps(int ac, info_t *info)
