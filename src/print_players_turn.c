@@ -9,20 +9,11 @@
 #include "lib.h"
 #include "my.h"
 
-void print_p1_turn(info_t *info)
+void print_turn(info_t *info)
 {
     my_putstr("my_positions:\n");
-    print_double_char(info->p1_map);
+    print_double_char(info->map);
     my_putstr("\nenemy's positions:\n");
-    print_double_char(info->p1_enemy_map);
-    my_putchar('\n');
-}
-
-void print_p2_turn(info_t *info)
-{
-    my_putstr("my_positions:\n");
-    print_double_char(info->p2_map);
-    my_putstr("\nenemy's positions:\n");
-    print_double_char(info->p2_enemy_map);
+    print_double_char(info->enemy_map);
     my_putchar('\n');
 }
