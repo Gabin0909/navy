@@ -20,7 +20,7 @@ void handler(int sig, siginfo_t *siginfo, void *context)
 {
     (void) sig;
     (void) context;
-    global.enemy_pid = siginfo->si_pid;
+    global.var = siginfo->si_pid;
     my_putstr("enemy connected\n\n");
 }
 

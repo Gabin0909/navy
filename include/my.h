@@ -29,9 +29,9 @@ void load_boat(int argc, info_t *info);
 void free_all(info_t *info);
 int check_attack_input(char *);
 void send_attack(int *binary, char);
-char *receive_attack(void);
+int *receive_attack(int *binary);
 int attack(info_t *info, char *coord);
-void wait_attack(void);
+void wait_attack(info_t *);
 int do_attack(void);
 void modify_maps(int ac, info_t *info);
 

@@ -18,11 +18,12 @@ typedef struct info_s {
     char *input;
     int p1_pid;
     int *p2_binary;
+    int enemy_pid;
     char ***boat_pos;
 }info_t;
 
 typedef struct global_s {
-    int enemy_pid;
+    int var;
 }global_t;
 
 #endif

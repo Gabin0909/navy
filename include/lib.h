@@ -33,5 +33,7 @@ char *my_itoa(int nb);
 int my_atoi_simpl(char ch);
 int *my_getbinary(int nbr, int *binary);
 int get_binary_size(int nbr);
+unsigned int my_tabint_to_int(int *nbr, int len, int start);
+int my_pow(int x, int n);
 
 #endif /* !LIB_H_ */
