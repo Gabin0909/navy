@@ -27,5 +27,7 @@ void init_struct(info_t *info);
 void load_boat(int argc, info_t *info);
 void free_all(info_t *info);
 int check_attack_input(char *);
+void send_attack(int *binary, char);
+char *receive_attack(void);
 
 #endif

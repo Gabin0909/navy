@@ -7,27 +7,42 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include "lib.h"
 #include "my.h"
 #include "struct.h"
 
+global_t global;
+
 void wait_attack(void)
 {
     my_putstr("waiting for enemy's attack...\n");
-    pause();
+    for (int i = 0; i != 13; i++) {
+        receive_attack();
+    }
 }
 
 void do_attack(void)
 {
     char *atk_pos = NULL;
-    int *binary = 0;
+    int *binary1 = NULL;
+    int *binary2 = NULL;
 
     my_putstr("attack: ");
     atk_pos = get_next_line(0);
-    if (check_attack_input(atk_pos) != 0)
+    if (atk_pos == NULL) {
+        my_putstr("\nattack: ");
         do_attack();
-    binary = my_getbinary(atk_pos[0], binary);
+    }
+    if (check_attack_input(atk_pos) != 0) {
+        my_putstr("wrong position\n");
+        do_attack();
+    }
+    binary1 = my_getbinary(atk_pos[0], binary1);
+    binary2 = my_getbinary(atk_pos[1], binary2);
+    send_attack(binary1, atk_pos[0]);
+    send_attack(binary2, atk_pos[1]);
 }
 
 void game_loop(int argc, info_t *info)

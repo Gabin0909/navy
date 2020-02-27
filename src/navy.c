@@ -15,7 +15,7 @@ global_t global;
 int navy(int argc, char **argv)
 {
     info_t info;
-
+    
     init_struct(&info);
     if (usage(argc, argv) != 0)
         return (1);

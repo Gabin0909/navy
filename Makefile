@@ -20,6 +20,7 @@ SRC		=	src/main.c						\
 			src/load_boat.c 				\
 			src/free_all.c 					\
 			src/check_attack_input.c 		\
+			src/manage_attack.c				\
 
 NAME	=	navy
 
