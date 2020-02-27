@@ -15,7 +15,7 @@ global_t global;
 int navy(int argc, char **argv)
 {
     info_t info;
-    
+
     init_struct(&info);
     if (usage(argc, argv) != 0)
         return (1);
@@ -27,7 +27,8 @@ int navy(int argc, char **argv)
         return (84);
     load_maps(&info);
     load_boat(argc, &info);
-    game_loop(argc, &info);
+    if (game_loop(argc, &info) != 0)
+        return (84);
     free_all(&info);
     return (0);
 }

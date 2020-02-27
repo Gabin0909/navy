@@ -19,7 +19,7 @@ SRC		=	src/main.c						\
 			src/init_struct.c 				\
 			src/load_boat.c 				\
 			src/free_all.c 					\
-			src/check_attack_input.c 		\
+			src/manage_attack_input.c 		\
 			src/manage_attack.c				\
 			src/attack.c 					\
 

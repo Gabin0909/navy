@@ -13,4 +13,5 @@ int my_atoi_simpl(char ch)
             a *= 10;
             a += (ch - 48);
     }
+    return (a);
 }
