@@ -15,9 +15,13 @@ char ***put_file_in_triple_array(char ***boat_pos, int fd)
 
     boat_pos = malloc(sizeof(char **) * 5);
     for (; (str = get_next_line(fd)) != NULL; j++) {
-        boat_pos[j] = my_str_to_word_array(str, boat_pos[j], ':');
-        free(str);
+        if (j <= 4) {
+            boat_pos[j] = my_str_to_word_array(str, boat_pos[j], ':');
+            free(str);
+        }
     }
+    if (j != 4)
+        return (NULL);
     boat_pos[j] = NULL;
     return (boat_pos);
 }

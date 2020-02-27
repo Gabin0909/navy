@@ -15,17 +15,19 @@
 
 int game_loop(int argc, info_t *info)
 {
-    char *coord = NULL;
-
-    if (argc == 2) {
-        print_turn(info);
-        if (do_attack() != 0)
-            return (84);
-    }
     while (info->win_loose != WIN && info->win_loose != LOOSE) {
-        print_turn(info);
-        wait_attack();
-        do_attack();
+        if (argc == 2) {
+            print_p1_turn(info);
+            wait_attack();
+            modify_maps(argc, info);
+            if (do_attack() != 0)
+                return (84);
+        }
+        if (argc == 3) {
+            print_p2_turn(info);
+            if (do_attack() != 0)
+                return (84);
+        }
     }
     return (0);
 }

@@ -22,6 +22,7 @@ SRC		=	src/main.c						\
 			src/manage_attack_input.c 		\
 			src/manage_attack.c				\
 			src/attack.c 					\
+			src/modify_map.c 				\
 
 NAME	=	navy
 

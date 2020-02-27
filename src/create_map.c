@@ -55,6 +55,10 @@ char **create_map(void)
 
 void load_maps(info_t *info)
 {
-    info->map = my_strdup_double_char(info->map, create_map());
-    info->enemy_map = my_strdup_double_char(info->enemy_map, info->map);
+    info->p1_map = my_strdup_double_char(info->p1_map, create_map());
+    info->p1_enemy_map = my_strdup_double_char(info->p1_enemy_map,
+    info->p1_map);
+    info->p2_map = my_strdup_double_char(info->p2_map, info->p1_map);
+    info->p2_enemy_map = my_strdup_double_char(info->p1_enemy_map,
+    info->p1_map);
 }

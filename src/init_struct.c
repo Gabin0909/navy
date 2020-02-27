@@ -11,8 +11,11 @@
 void init_struct(info_t *info)
 {
     info->win_loose = 0;
-    info->p1_pid = 0;
-    info->map = NULL;
-    info->enemy_map = 0;
+    info->input = 0;
+    info->atk = 0;
+    info->p1_enemy_map = NULL;
+    info->p1_map = NULL;
+    info->p2_enemy_map = NULL;
+    info->p2_map = NULL;
     info->boat_pos = NULL;
 }

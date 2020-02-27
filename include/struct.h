@@ -9,10 +9,15 @@
 #define STRUCT_H
 
 typedef struct info_s {
-    char **map;
-    char **enemy_map;
+    char **p1_map;
+    char **p1_enemy_map;
+    char **p2_map;
+    char **p2_enemy_map;
     int win_loose;
+    int atk;
+    char *input;
     int p1_pid;
+    int *p2_binary;
     char ***boat_pos;
 }info_t;
 
