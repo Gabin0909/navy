@@ -9,7 +9,27 @@
 #include "my.h"
 #include "lib.h"
 
-void modify_ennemy_map(info_t *info, char **str)
+void check_hit_p1(info_t *info)
+{
+    if (info->atk == HIT) {
+        my_printf("%s: hit\n\n", info->input);
+    }
+    else {
+        my_printf("%s: missed\n\n", info->input);
+    }
+}
+
+void check_hit_p2(info_t *info)
+{
+    if (info->atk == HIT) {
+        my_printf("%s: hit\n\n", info->input);
+    }
+    else {
+        my_printf("%s: missed\n\n", info->input);
+    }
+}
+
+void modify_enemy_maps(info_t *info, char **str)
 {
     int i = 0;
     int j = 0;
@@ -43,11 +63,13 @@ void modify_maps(int ac, info_t *info)
     if (info->input == NULL)
         return;
     if (ac == 2) {
-        modify_ennemy_map(info, info->p1_enemy_map);
+        modify_enemy_maps(info, info->p2_enemy_map);
         modify_player_map(info, info->p1_map);
+        check_hit_p1(info);
     } else if (ac == 3) {
-        modify_ennemy_map(info, info->p2_enemy_map);
+        modify_enemy_maps(info, info->p1_enemy_map);
         modify_player_map(info, info->p2_map);
+        check_hit_p2(info);
     }
 
 

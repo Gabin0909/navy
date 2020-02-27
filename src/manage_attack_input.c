@@ -7,12 +7,46 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <signal.h>
 #include <unistd.h>
 #include "lib.h"
 #include "my.h"
 #include "struct.h"
 
 global_t global;
+
+void send_attack_to_p2(int *binary, char atk, info_t *info)
+{
+    int len = get_binary_size(atk);
+
+    for (; len > -1; len--) {
+        if (binary[len] == 0) {
+            kill(global.var, SIGUSR1);
+            usleep(4000);
+        }
+        else if (binary[len] == 1) {
+            kill(global.var, SIGUSR2);
+            usleep(4000);
+        }
+    }
+}
+
+void send_attack_to_p1(int *binary, char atk, info_t *info)
+{
+    int len = get_binary_size(atk);
+
+    my_printf("p1_pid: %d", info->p1_pid);
+    for (; len > -1; len--) {
+        if (binary[len] == 0) {
+            kill(info->p1_pid, SIGUSR1);
+            usleep(4000);
+        }
+        else if (binary[len] == 1) {
+            kill(info->p1_pid, SIGUSR2);
+            usleep(4000);
+        }
+    }
+}
 
 void wait_attack(info_t *info)
 {
@@ -33,7 +67,7 @@ void wait_attack(info_t *info)
     info->input[2] = '\0';
 }
 
-int do_attack(void)
+int do_attack(int argc, info_t *info)
 {
     char *atk_pos = NULL;
     int *binary1 = NULL;
@@ -45,12 +79,18 @@ int do_attack(void)
         return (84);
     if (check_attack_input(atk_pos) != 0) {
         my_putstr("wrong position\n");
-        do_attack();
+        do_attack(argc, info);
     }
     binary1 = my_getbinary(atk_pos[0], binary1);
     binary2 = my_getbinary(atk_pos[1], binary2);
-    send_attack(binary1, atk_pos[0]);
-    send_attack(binary2, atk_pos[1]);
+    if (argc == 2) {
+        send_attack_to_p2(binary1, atk_pos[0], info);
+        send_attack_to_p2(binary2, atk_pos[1], info);
+    }
+    if (argc == 3) {
+        send_attack_to_p1(binary1, atk_pos[0], info);
+        send_attack_to_p1(binary2, atk_pos[1], info);
+    }
     return (0);
 }
 

@@ -18,7 +18,7 @@ char **create_map(void);
 int navy(int, char **);
 int file_error(int ac, char **av, info_t *info);
 int check_file(char ***);
-int player_connection(int, char **);
+int player_connection(int, char **, info_t *);
 void load_maps(info_t *);
 int game_loop(int, info_t *);
 void print_p1_turn(info_t *info);
@@ -32,7 +32,7 @@ void send_attack(int *binary, char);
 int *receive_attack(int *binary);
 int attack(info_t *info, char *coord);
 void wait_attack(info_t *);
-int do_attack(void);
+int do_attack(int argc, info_t *info);
 void modify_maps(int ac, info_t *info);
 
 #endif

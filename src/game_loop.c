@@ -19,7 +19,7 @@ int game_loop(int argc, info_t *info)
     while (info->win_loose != WIN && info->win_loose != LOOSE) {
         if (argc == 2) {
             print_p1_turn(info);
-            if (do_attack() != 0)
+            if (do_attack(argc, info) != 0)
                 return (84);
             wait_attack(info);
             modify_maps(argc, info);
@@ -28,7 +28,7 @@ int game_loop(int argc, info_t *info)
             print_p2_turn(info);
             wait_attack(info);
             modify_maps(argc, info);
-            if (do_attack() != 0)
+            if (do_attack(argc, info) != 0)
                 return (84);
         }
     }
