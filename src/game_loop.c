@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <signal.h>
 #include "lib.h"
 #include "my.h"
 #include "struct.h"
@@ -23,11 +24,13 @@ int game_loop(int argc, info_t *info)
                 return (84);
             wait_attack(info);
             modify_maps(argc, info);
+            free(info->input);
         }
         if (argc == 3) {
             print_p2_turn(info);
             wait_attack(info);
             modify_maps(argc, info);
+            free(info->input);
             if (do_attack(argc, info) != 0)
                 return (84);
         }

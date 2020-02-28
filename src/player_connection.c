@@ -56,8 +56,10 @@ int connect_player_two(char **argv)
 
 int player_connection(int argc, char **argv, info_t *info)
 {
-    if (argc == 2)
+    if (argc == 2) {
         connect_player_one();
+        info->enemy_pid = global.var;
+    }
     if (argc == 3) {
         info->p1_pid = my_atoi(argv[1]);
         connect_player_two(argv);

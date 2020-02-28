@@ -21,11 +21,11 @@ void send_attack_to_p2(int *binary, char atk, info_t *info)
 
     for (; len > -1; len--) {
         if (binary[len] == 0) {
-            kill(global.var, SIGUSR1);
+            kill(info->enemy_pid, SIGUSR1);
             usleep(4000);
         }
         else if (binary[len] == 1) {
-            kill(global.var, SIGUSR2);
+            kill(info->enemy_pid, SIGUSR2);
             usleep(4000);
         }
     }

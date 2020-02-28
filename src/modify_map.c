@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <signal.h>
 #include "my.h"
 #include "lib.h"
 
@@ -13,9 +14,11 @@ void check_hit_p1(info_t *info)
 {
     if (info->atk == HIT) {
         my_printf("%s: hit\n\n", info->input);
+        kill(info->enemy_pid, SIGUSR1);
     }
     else {
         my_printf("%s: missed\n\n", info->input);
+        kill(info->enemy_pid, SIGUSR2);
     }
 }
 
@@ -23,9 +26,11 @@ void check_hit_p2(info_t *info)
 {
     if (info->atk == HIT) {
         my_printf("%s: hit\n\n", info->input);
+        kill(info->p1_pid, SIGUSR1);
     }
     else {
         my_printf("%s: missed\n\n", info->input);
+        kill(info->p1_pid, SIGUSR2);
     }
 }
 
