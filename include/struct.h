@@ -19,6 +19,7 @@ typedef struct info_s {
     int p1_pid;
     int *p2_binary;
     int enemy_pid;
+    char *atk_pos;
     char ***boat_pos;
 }info_t;
 

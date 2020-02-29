@@ -22,17 +22,19 @@ int game_loop(int argc, info_t *info)
             print_p1_turn(info);
             if (do_attack(argc, info) != 0)
                 return (84);
-            wait_attack(info);
+            my_printf("%s:  ", info->atk_pos);
+            check_attack(info);
             modify_maps(argc, info);
-            free(info->input);
+            wait_attack(info);
         }
         if (argc == 3) {
             print_p2_turn(info);
             wait_attack(info);
             modify_maps(argc, info);
-            free(info->input);
             if (do_attack(argc, info) != 0)
                 return (84);
+            my_printf("%s:  ", info->atk_pos);
+            check_attack(info);
         }
     }
     return (0);

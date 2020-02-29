@@ -7,30 +7,27 @@
 
 #include <stdlib.h>
 #include <signal.h>
+#include <unistd.h>
 #include "my.h"
 #include "lib.h"
 
 void check_hit_p1(info_t *info)
 {
     if (info->atk == HIT) {
-        my_printf("%s: hit\n\n", info->input);
-        kill(info->enemy_pid, SIGUSR1);
+        my_printf("hit\n\n");
     }
     else {
-        my_printf("%s: missed\n\n", info->input);
-        kill(info->enemy_pid, SIGUSR2);
+        my_printf("missed\n\n");
     }
 }
 
 void check_hit_p2(info_t *info)
 {
     if (info->atk == HIT) {
-        my_printf("%s: hit\n\n", info->input);
-        kill(info->p1_pid, SIGUSR1);
+        my_printf("hit\n\n");
     }
     else {
-        my_printf("%s: missed\n\n", info->input);
-        kill(info->p1_pid, SIGUSR2);
+        my_printf("missed\n\n");
     }
 }
 
@@ -41,8 +38,9 @@ void modify_enemy_maps(info_t *info, char **str)
 
     for (; str[0][j] != info->input[0]; j++);
     for (; str[i][0] != info->input[1]; i++);
-    if (info->atk == HIT)
+    if (info->atk == HIT) {
         str[i][j] = 'x';
+    }
     else
         str[i][j] = 'o';
 }
@@ -57,9 +55,13 @@ void modify_player_map(info_t *info, char **str)
     if (str[i][j] != '.') {
         info->atk = HIT;
         str[i][j] = 'x';
+        usleep(4000);
+        kill(info->p1_pid, SIGUSR1);
     } else {
         info->atk = MISS;
         str[i][j] = 'o';
+        usleep(4000);
+        kill(info->p1_pid, SIGUSR2);
     }
 }
 

@@ -65,31 +65,31 @@ void wait_attack(info_t *info)
     info->input[0] = letter;
     info->input[1] = number;
     info->input[2] = '\0';
+    my_printf("%s:  ", info->input);
 }
 
 int do_attack(int argc, info_t *info)
 {
-    char *atk_pos = NULL;
     int *binary1 = NULL;
     int *binary2 = NULL;
 
     my_putstr("attack: ");
-    atk_pos = get_next_line(0);
-    if (atk_pos == NULL)
+    info->atk_pos = get_next_line(0);
+    if (info->atk_pos == NULL)
         return (84);
-    if (check_attack_input(atk_pos) != 0) {
+    if (check_attack_input(info->atk_pos) != 0) {
         my_putstr("wrong position\n");
         do_attack(argc, info);
     }
-    binary1 = my_getbinary(atk_pos[0], binary1);
-    binary2 = my_getbinary(atk_pos[1], binary2);
+    binary1 = my_getbinary(info->atk_pos[0], binary1);
+    binary2 = my_getbinary(info->atk_pos[1], binary2);
     if (argc == 2) {
-        send_attack_to_p2(binary1, atk_pos[0], info);
-        send_attack_to_p2(binary2, atk_pos[1], info);
+        send_attack_to_p2(binary1, info->atk_pos[0], info);
+        send_attack_to_p2(binary2, info->atk_pos[1], info);
     }
     if (argc == 3) {
-        send_attack_to_p1(binary1, atk_pos[0], info);
-        send_attack_to_p1(binary2, atk_pos[1], info);
+        send_attack_to_p1(binary1, info->atk_pos[0], info);
+        send_attack_to_p1(binary2, info->atk_pos[1], info);
     }
     return (0);
 }
