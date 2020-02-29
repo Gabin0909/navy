@@ -21,7 +21,6 @@ void handler(int sig, siginfo_t *siginfo, void *context)
     (void) sig;
     (void) context;
     global.var = siginfo->si_pid;
-    my_putstr("enemy connected\n\n");
 }
 
 int connect_player_one(void)
@@ -36,6 +35,7 @@ int connect_player_one(void)
     prepaSignal.sa_flags = SA_SIGINFO;
     sigaction(SIGUSR1, &prepaSignal, NULL);
     pause();
+    my_putstr("enemy connected\n\n");
     return (0);
 }
 

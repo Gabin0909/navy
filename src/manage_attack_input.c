@@ -35,7 +35,6 @@ void send_attack_to_p1(int *binary, char atk, info_t *info)
 {
     int len = get_binary_size(atk);
 
-    my_printf("p1_pid: %d", info->p1_pid);
     for (; len > -1; len--) {
         if (binary[len] == 0) {
             kill(info->p1_pid, SIGUSR1);

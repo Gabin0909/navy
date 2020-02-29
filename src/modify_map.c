@@ -39,7 +39,6 @@ void modify_enemy_maps(info_t *info, char **str)
     int i = 0;
     int j = 0;
 
-    //my_printf("%s\n", info->input);
     for (; str[0][j] != info->input[0]; j++);
     for (; str[i][0] != info->input[1]; i++);
     if (info->atk == HIT)
