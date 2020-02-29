@@ -20,6 +20,8 @@ int *fill_binary(int *binary)
 {
     static int i = 0;
 
+    if (i == 13)
+        i = 0;
     binary[i] = global.var;
     i++;
     return (binary);

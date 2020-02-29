@@ -62,6 +62,7 @@ void wait_attack(info_t *info)
     }
     letter = my_tabint_to_int(binary, -1, 6);
     number = my_tabint_to_int(binary, 6, 12);
+    free(binary);
     info->input[0] = letter;
     info->input[1] = number;
     info->input[2] = '\0';
