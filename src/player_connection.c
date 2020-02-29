@@ -47,6 +47,7 @@ int connect_player_two(char **argv)
 
     pid_1 = my_atoi(argv[1]);
     status = kill(pid_1, SIGUSR1);
+    usleep(4000);
     if (status != 0)
         return (84);
     my_printf("my_pid:  %d\n", pid_2);
