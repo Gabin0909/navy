@@ -26,7 +26,7 @@ void rec1(int sig)
     my_printf("missed\n\n");
 }
 
-void check_attack(info_t *info)
+void check_attack(void)
 {
     struct sigaction sig0;
     struct sigaction sig1;

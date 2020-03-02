@@ -34,6 +34,6 @@ int attack(info_t *info, char *coord);
 void wait_attack(info_t *);
 int do_attack(int argc, info_t *info);
 void modify_maps(int ac, info_t *info);
-void check_attack(info_t *info);
+void check_attack(void);
 
 #endif
