@@ -45,7 +45,7 @@ void modify_enemy_maps(info_t *info, char **str)
         str[i][j] = 'o';
 }
 
-void modify_player_map(info_t *info, char **str)
+void modify_player_map(info_t *info, char **str, int pid)
 {
     int i = 0;
     int j = 0;
@@ -56,12 +56,12 @@ void modify_player_map(info_t *info, char **str)
         info->atk = HIT;
         str[i][j] = 'x';
         usleep(4000);
-        kill(info->p1_pid, SIGUSR1);
+        kill(pid, SIGUSR1);
     } else {
         info->atk = MISS;
         str[i][j] = 'o';
         usleep(4000);
-        kill(info->p1_pid, SIGUSR2);
+        kill(pid, SIGUSR2);
     }
 }
 
@@ -71,11 +71,11 @@ void modify_maps(int ac, info_t *info)
         return;
     if (ac == 2) {
         modify_enemy_maps(info, info->p2_enemy_map);
-        modify_player_map(info, info->p1_map);
+        modify_player_map(info, info->p1_map, info->enemy_pid);
         check_hit_p1(info);
     } else if (ac == 3) {
         modify_enemy_maps(info, info->p1_enemy_map);
-        modify_player_map(info, info->p2_map);
+        modify_player_map(info, info->p2_map, info->p1_pid);
         check_hit_p2(info);
     }
 
