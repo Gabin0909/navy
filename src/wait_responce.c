@@ -23,7 +23,6 @@ void send_responce(int argc, info_t *info)
 
 void wait_responce(int argc, info_t *info)
 {
-    
     if (argc == 2) {
         pause();
     }
