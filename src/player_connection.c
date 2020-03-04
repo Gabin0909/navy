@@ -39,14 +39,13 @@ int connect_player_one(void)
     return (0);
 }
 
-int connect_player_two(char **argv)
+int connect_player_two(char **argv, info_t *info)
 {
-    pid_t pid_1 = 0;
     pid_t pid_2 = getpid();
     int status = 0;
 
-    pid_1 = my_atoi(argv[1]);
-    status = kill(pid_1, SIGUSR1);
+    info->p1_pid = my_atoi(argv[1]);
+    status = kill(info->p1_pid, SIGUSR1);
     usleep(4000);
     if (status != 0)
         return (84);
@@ -57,13 +56,13 @@ int connect_player_two(char **argv)
 
 int player_connection(int argc, char **argv, info_t *info)
 {
+    info->argc = argc;
     if (argc == 2) {
         connect_player_one();
         info->enemy_pid = global.var;
     }
     if (argc == 3) {
-        info->p1_pid = my_atoi(argv[1]);
-        connect_player_two(argv);
+        connect_player_two(argv, info);
     }
     return (0);
 }
