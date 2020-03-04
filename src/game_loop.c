@@ -24,6 +24,7 @@ int p1_turn(int argc, info_t *info)
     check_attack();
     wait_attack(argc, info);
     modify_maps(argc, info);
+    check_win(argc, info);
     free(info->atk_pos);
     return (0);
 }
@@ -33,6 +34,7 @@ int p2_turn(int argc, info_t *info)
     print_p2_turn(info);
     wait_attack(argc, info);
     modify_maps(argc, info);
+    check_win(argc, info);
     if (do_attack(argc, info) != 0)
         return (84);
     my_printf("%s:  ", info->atk_pos);
