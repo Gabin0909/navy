@@ -71,11 +71,3 @@ void check_p2_win(info_t *info)
     }
     check_win_map(lose, info);
 }
-
-void check_win(int argc, info_t *info)
-{
-    if (argc == 2)
-        check_p1_win(info);
-    if (argc == 3)
-        check_p2_win(info);
-}
