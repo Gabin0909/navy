@@ -27,4 +27,3 @@ unsigned int my_tabint_to_int(int *nbr, int finish, int index)
     }
     return (a);
 }
-

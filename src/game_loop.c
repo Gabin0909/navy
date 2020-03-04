@@ -54,6 +54,10 @@ int p2_turn(int argc, info_t *info)
         my_printf("%s:  ", info->atk_pos);
         check_attack();
         modify_enemy_maps(info, info->p2_enemy_map);
+    if (check_p2_win(info) != 0) {
+        print_p2_turn(info);
+        return (0);
+    }
         free(info->atk_pos);
     }
     return (0);
