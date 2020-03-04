@@ -12,28 +12,31 @@
 #define MY_H
 
 int navy(int , char **);
-int usage(int argc, char **argv);
+int usage(int, char **);
 int error_handling(int);
 char **create_map(void);
 int navy(int, char **);
-int file_error(int ac, char **av, info_t *info);
+int file_error(int, char **, info_t *);
 int check_file(char ***);
 int player_connection(int, char **, info_t *);
 void load_maps(info_t *);
 int game_loop(int, info_t *);
-void print_p1_turn(info_t *info);
-void print_p2_turn(info_t *info);
-char ***put_file_in_triple_array(char ***boat_pos, int fd);
-void init_struct(info_t *info);
-void load_boat(int argc, info_t *info);
-void free_all(info_t *info);
+void print_p1_turn(info_t *);
+void print_p2_turn(info_t *);
+char ***put_file_in_triple_array(char ***, int);
+void init_struct(info_t *);
+void load_boat(int, info_t *);
+void free_all(info_t *);
 int check_attack_input(char *);
-void send_attack(int *binary, char);
-int *receive_attack(int *binary);
-int attack(info_t *info, char *coord);
-void wait_attack(info_t *);
-int do_attack(int argc, info_t *info);
-void modify_maps(int ac, info_t *info);
+void send_attack(int *, char);
+int *receive_attack(int *);
+int attack(info_t *, char *);
+void wait_attack(int, info_t *);
+int do_attack(int, info_t *);
+void modify_maps(int, info_t *);
 void check_attack(void);
+void send_binary(int, info_t *, int *, int *);
+void send_attack_to_p1(int *, char, info_t *);
+void send_attack_to_p2(int *, char, info_t *);
 
 #endif

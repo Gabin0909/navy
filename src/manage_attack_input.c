@@ -21,12 +21,12 @@ void send_attack_to_p2(int *binary, char atk, info_t *info)
 
     for (; len > -1; len--) {
         if (binary[len] == 0) {
-            kill(info->enemy_pid, SIGUSR1);
             usleep(4000);
+            kill(info->enemy_pid, SIGUSR1);
         }
         else if (binary[len] == 1) {
-            kill(info->enemy_pid, SIGUSR2);
             usleep(4000);
+            kill(info->enemy_pid, SIGUSR2);
         }
     }
 }
@@ -37,17 +37,17 @@ void send_attack_to_p1(int *binary, char atk, info_t *info)
 
     for (; len > -1; len--) {
         if (binary[len] == 0) {
-            kill(info->p1_pid, SIGUSR1);
             usleep(4000);
+            kill(info->p1_pid, SIGUSR1);
         }
         else if (binary[len] == 1) {
-            kill(info->p1_pid, SIGUSR2);
             usleep(4000);
+            kill(info->p1_pid, SIGUSR2);
         }
     }
 }
 
-void wait_attack(info_t *info)
+void wait_attack(int argc, info_t *info)
 {
     int *binary = NULL;
     unsigned int letter = 0;
@@ -57,7 +57,10 @@ void wait_attack(info_t *info)
     binary = malloc(sizeof(int) * 13);
     my_putstr("waiting for enemy's attack...\n");
     for (int i = 0; i != 13; i++) {
-        binary = receive_attack(binary);
+        if (argc == 2)
+            binary = receive_attack(binary);
+        else if (argc == 3)
+            binary = receive_attack(binary);
     }
     letter = my_tabint_to_int(binary, -1, 6);
     number = my_tabint_to_int(binary, 6, 12);
@@ -79,18 +82,11 @@ int do_attack(int argc, info_t *info)
         return (84);
     if (check_attack_input(info->atk_pos) != 0) {
         my_putstr("wrong position\n");
+        free(info->atk_pos);
         do_attack(argc, info);
+        return (0);
     }
-    binary1 = my_getbinary(info->atk_pos[0], binary1);
-    binary2 = my_getbinary(info->atk_pos[1], binary2);
-    if (argc == 2) {
-        send_attack_to_p2(binary1, info->atk_pos[0], info);
-        send_attack_to_p2(binary2, info->atk_pos[1], info);
-    }
-    if (argc == 3) {
-        send_attack_to_p1(binary1, info->atk_pos[0], info);
-        send_attack_to_p1(binary2, info->atk_pos[1], info);
-    }
+    send_binary(argc, info, binary1, binary2);
     return (0);
 }
 

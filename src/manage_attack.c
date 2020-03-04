@@ -16,6 +16,20 @@
 
 global_t global;
 
+void send_binary(int argc, info_t *info, int *binary1, int *binary2)
+{
+    binary1 = my_getbinary(info->atk_pos[0], binary1);
+    binary2 = my_getbinary(info->atk_pos[1], binary2);
+    if (argc == 2) {
+        send_attack_to_p2(binary1, info->atk_pos[0], info);
+        send_attack_to_p2(binary2, info->atk_pos[1], info);
+    }
+    if (argc == 3) {
+        send_attack_to_p1(binary1, info->atk_pos[0], info);
+        send_attack_to_p1(binary2, info->atk_pos[1], info);
+    }
+}
+
 int *fill_binary(int *binary)
 {
     static int i = 0;
