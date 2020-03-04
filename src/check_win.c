@@ -75,7 +75,7 @@ int check_p2_win(info_t *info)
                 win++;
         }
     }
-    if (check_win_map(lose, info) != 0)
+    if (check_win_map(win, info) != 0)
         return (1);
     return (0);
 }
