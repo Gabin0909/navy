@@ -80,7 +80,7 @@ int do_attack(int argc, info_t *info)
     info->atk_pos = get_next_line(0);
     if (info->atk_pos == NULL)
         return (84);
-    if (check_attack_input(info->atk_pos) != 0) {
+    if (check_attack_input(info->atk_pos, info, argc) != 0) {
         my_putstr("wrong position\n");
         free(info->atk_pos);
         do_attack(argc, info);
@@ -90,12 +90,14 @@ int do_attack(int argc, info_t *info)
     return (0);
 }
 
-int check_attack_input(char *atk_pos)
+int check_attack_input(char *atk_pos, info_t *info, int argc)
 {
     if ((atk_pos[0] < 'A' || atk_pos[0] > 'H')
     || (atk_pos[1] < '1' || atk_pos[1] > '8'))
         return (84);
     else if (my_strlen(atk_pos) != 2)
+        return (84);
+    if (already_hit(argc, info) != 0)
         return (84);
     return (0);
 }

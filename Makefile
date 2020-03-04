@@ -24,6 +24,7 @@ SRC		=	src/main.c						\
 			src/modify_map.c 				\
 			src/check_attack.c				\
 			src/check_win.c					\
+			src/already_hit.c				\
 
 NAME	=	navy
 
