@@ -18,14 +18,23 @@ global_t global;
 int p1_turn(int argc, info_t *info)
 {
     print_p1_turn(info);
-    if (do_attack(argc, info) != 0)
-        return (84);
+    if (info->win_loose == 0) {
+        if (do_attack(argc, info) != 0)
+            return (84);
+    }
     my_printf("%s:  ", info->atk_pos);
     check_attack();
     modify_enemy_maps(info, info->p1_enemy_map);
+    if (check_p1_win(info) != 0) {
+        print_p1_turn(info);
+        return (0);
+    }
     wait_attack(argc, info);
     modify_maps(argc, info);
-    check_p1_win(info);
+    if (check_p1_win(info) != 0) {
+        print_p1_turn(info);
+        return (0);
+    }
     free(info->atk_pos);
     return (0);
 }
@@ -35,7 +44,10 @@ int p2_turn(int argc, info_t *info)
     print_p2_turn(info);
     wait_attack(argc, info);
     modify_maps(argc, info);
-    check_p2_win(info);
+    if (check_p2_win(info) != 0) {
+        print_p2_turn(info);
+        return (0);
+    }
     if (info->win_loose == 0) {
         if (do_attack(argc, info) != 0)
             return (84);
@@ -59,5 +71,9 @@ int game_loop(int argc, info_t *info)
                 return (84);
         }
     }
+    if (info->win_loose == WIN)
+        my_printf("I won\n");
+    else
+        my_printf("Enemy won\n");
     return (0);
 }
