@@ -70,12 +70,12 @@ void modify_maps(int ac, info_t *info)
     if (info->input == NULL)
         return;
     if (ac == 2) {
-        modify_enemy_maps(info, info->p2_enemy_map);
         modify_player_map(info, info->p1_map, info->enemy_pid);
+        modify_enemy_maps(info, info->p2_enemy_map);
         check_hit_p1(info);
     } else if (ac == 3) {
-        modify_enemy_maps(info, info->p1_enemy_map);
         modify_player_map(info, info->p2_map, info->p1_pid);
+        modify_enemy_maps(info, info->p1_enemy_map);
         check_hit_p2(info);
     }
 
