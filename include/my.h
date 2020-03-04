@@ -38,5 +38,6 @@ void check_attack(void);
 void send_binary(int, info_t *, int *, int *);
 void send_attack_to_p1(int *, char, info_t *);
 void send_attack_to_p2(int *, char, info_t *);
+void check_win(int, info_t *);
 
 #endif
