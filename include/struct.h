@@ -23,6 +23,7 @@ typedef struct info_s {
     int enemy_pid;
     char *atk_pos;
     char ***boat_pos;
+    int atk_receiv;
 }info_t;
 
 typedef struct global_s {

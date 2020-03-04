@@ -14,16 +14,20 @@
 #include "my.h"
 #include "struct.h"
 
+global_t global;
+
 void rec0(int sig)
 {
     (void) sig;
     my_printf("hit\n\n");
+    global.var = HIT;
 }
 
 void rec1(int sig)
 {
     (void) sig;
     my_printf("missed\n\n");
+    global.var = MISS;
 }
 
 void check_attack(void)
