@@ -39,5 +39,6 @@ void send_binary(int, info_t *, int *, int *);
 void send_attack_to_p1(int *, char, info_t *);
 void send_attack_to_p2(int *, char, info_t *);
 void modify_enemy_maps(info_t *, char **);
+void check_win(int, info_t *);
 
 #endif
