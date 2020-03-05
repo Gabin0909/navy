@@ -8,6 +8,25 @@
 #include <stdlib.h>
 #include "lib.h"
 
+int diagonal_boat(char **boat)
+{
+    char x = boat[1][0];
+    char y = boat[1][1];
+    char a = boat[2][0];
+    char b = boat[2][1];
+    int count = 0;
+
+    if (x != a)
+        count++;
+    if (y != b)
+        count++;
+    if (count == 2) {
+        my_putstr("Diagonal boats.\n");
+        return (1);
+    }
+    return (0);
+}
+
 int check_boat_length(char ***boat)
 {
     int total = 0;
@@ -58,6 +77,7 @@ int check_wrong_arg_value(char ***boat, int i)
                 return (1);
             }
         }
+
     }
     return (0);
 }
@@ -77,6 +97,8 @@ int check_file(char ***boat)
         return (1);
     for (int j = 0; boat[j] != NULL; j++) {
         if (check_wrong_arg_value(boat, j) != 0)
+            return (1);
+        if (diagonal_boat(boat[j]) != 0)
             return (1);
     }
     return (0);
