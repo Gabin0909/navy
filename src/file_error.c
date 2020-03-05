@@ -17,7 +17,7 @@ int check_inside_file(int fd, info_t *info)
 {
     info->boat_pos = put_file_in_triple_array(info->boat_pos, fd);
     if (info->boat_pos == NULL) {
-        my_putstr("Too many boats.\n");
+        my_putstr("Wrong arguments.\n");
         return (1);
     }
     if (check_file(info->boat_pos) != 0)

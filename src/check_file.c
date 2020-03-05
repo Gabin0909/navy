@@ -8,19 +8,30 @@
 #include <stdlib.h>
 #include "lib.h"
 
+int double_check(char *str)
+{
+    if (my_strlen(str) != 7)
+        return (1);
+    if (str[1] != ':' || str[4] != ':')
+        return (1);
+    if (str[0] < '2' || str[0] > '5'
+    || str[3] < '1' || str[3] > '8'
+    || str[6] < '1' || str[6] > '8')
+        return (1);
+    if (str[2] < 'A' || str[2] > 'H'
+    || str[5] < 'A' || str[5] > 'H')
+        return (1);
+    return (0);
+}
+
 int diagonal_boat(char **boat)
 {
     char x = boat[1][0];
     char y = boat[1][1];
     char a = boat[2][0];
     char b = boat[2][1];
-    int count = 0;
 
-    if (x != a)
-        count++;
-    if (y != b)
-        count++;
-    if (count == 2) {
+    if (x != a && y != b) {
         my_putstr("Diagonal boats.\n");
         return (1);
     }

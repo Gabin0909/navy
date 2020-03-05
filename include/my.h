@@ -43,5 +43,6 @@ void check_win(int, info_t *);
 int check_p1_win(info_t *);
 int check_p2_win(info_t *);
 int already_hit(int, info_t *);
+int double_check(char *);
 
 #endif
