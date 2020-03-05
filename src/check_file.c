@@ -27,27 +27,10 @@ int diagonal_boat(char **boat)
     return (0);
 }
 
-int check_boat_length(char ***boat)
-{
-    int total = 0;
-
-    for (int i = 0; boat[i] != NULL; i++) {
-        if (boat[i][0][0] > '5' || boat[i][0][0] < '2') {
-            my_putstr("Wrong boat length.\n");
-            return (1);
-        }
-        total += my_atoi(boat[i][0]);
-    }
-    if (total != 14) {
-        my_putstr("File can not contain twot times the same boat length.\n");
-        return (1);
-    }
-    return (0);
-}
-
-int check_miss_arg_split(char ***boat)
+int check_split_length(char ***boat)
 {
     int b = 0;
+    int total = 0;
 
     for (int j = 0; boat[j] != NULL; j++) {
         for (; boat[j][b] != NULL; b++);
@@ -55,7 +38,16 @@ int check_miss_arg_split(char ***boat)
             my_putstr("Wrong arguments.\n");
             return (1);
         }
+        if (boat[j][0][0] > '5' || boat[j][0][0] < '2') {
+            my_putstr("Wrong boat length.\n");
+            return (1);
+        }
+        total += my_atoi(boat[j][0]);
         b = 0;
+    }
+    if (total != 14) {
+        my_putstr("File can not contain two times the same boat length.\n");
+        return (1);
     }
     return (0);
 }
@@ -77,7 +69,6 @@ int check_wrong_arg_value(char ***boat, int i)
                 return (1);
             }
         }
-
     }
     return (0);
 }
@@ -91,9 +82,7 @@ int check_file(char ***boat)
         my_putstr("Not enough boats.\n");
         return (1);
     }
-    if (check_miss_arg_split(boat) != 0)
-        return (1);
-    if (check_boat_length(boat) != 0)
+    if (check_split_length(boat) != 0)
         return (1);
     for (int j = 0; boat[j] != NULL; j++) {
         if (check_wrong_arg_value(boat, j) != 0)
