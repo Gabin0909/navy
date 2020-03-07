@@ -13,6 +13,26 @@
 #include "lib.h"
 #include "my.h"
 
+int corresponding_boats(char **boat, int i)
+{
+    char x = boat[1][0];
+    char y = boat[1][1];
+    char a = boat[2][0];
+    char b = boat[2][1];
+    int count = 0;
+
+    if (x != a) {
+        for (; x < a; count++, x++);
+        if (count != (i + 1))
+            return (1);
+    } else if (y != b) {
+        for (; y < b; count++, y++);
+        if (count != (i + 1))
+            return (1);
+    }
+    return (0);
+}
+
 int check_inside_file(int fd, info_t *info)
 {
     info->boat_pos = put_file_in_triple_array(info->boat_pos, fd);
@@ -22,6 +42,12 @@ int check_inside_file(int fd, info_t *info)
     }
     if (check_file(info->boat_pos) != 0)
         return (1);
+    for (int i = 0; info->boat_pos[i] != NULL; i++) {
+        if (corresponding_boats(info->boat_pos[i], i) != 0) {
+            my_putstr("Boat length doesn't match its position.\n");
+            return (1);
+        }
+    }
     return (0);
 }
 

@@ -35,6 +35,17 @@ int diagonal_boat(char **boat)
         my_putstr("Diagonal boats.\n");
         return (1);
     }
+    if (x == a) {
+        if (y > b) {
+            my_putstr("Wrong arguments.\n");
+            return (1);
+        }
+    } else {
+        if (x > a) {
+            my_putstr("Wrong arguments.\n");
+            return (1);
+        }
+    }
     return (0);
 }
 

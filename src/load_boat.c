@@ -46,3 +46,48 @@ void load_boat(int argc, info_t *info)
             put_boats_in_map(info, info->p2_map, i);
     }
 }
+
+int check_boats_p1(info_t *info)
+{
+    int b = 0;
+
+    for (int i = 0; info->p1_map[i] != NULL; i++) {
+        for (int j = 0; info->p1_map[i][j] != '\0'; j++) {
+            if (info->p1_map[i][j] == '2' || info->p1_map[i][j] == '3'
+            || info->p1_map[i][j] == '4' || info->p1_map[i][j] == '5')
+                b++;
+        }
+    }
+    if (b != 18) {
+        free_all(info);
+        return (1);
+    }
+    return (0);
+}
+
+int check_boats_p2(info_t *info)
+{
+    int b = 0;
+
+    for (int i = 0; info->p2_map[i] != NULL; i++) {
+        for (int j = 0; info->p2_map[i][j] != '\0'; j++) {
+            if (info->p2_map[i][j] == '2' || info->p2_map[i][j] == '3'
+            || info->p2_map[i][j] == '4' || info->p2_map[i][j] == '5')
+                b++;
+        }
+    }
+    if (b != 18) {
+        free_all(info);
+        return (1);
+    }
+    return (0);
+}
+
+int check_boats(int ac, info_t *info)
+{
+    if (ac == 2)
+        return (check_boats_p1(info));
+    else if (ac == 3)
+        return (check_boats_p2(info));
+    return (0);
+}

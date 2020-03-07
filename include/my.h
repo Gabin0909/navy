@@ -44,5 +44,6 @@ int check_p1_win(info_t *);
 int check_p2_win(info_t *);
 int already_hit(int, info_t *);
 int double_check(char *);
+int check_boats(int, info_t *);
 
 #endif

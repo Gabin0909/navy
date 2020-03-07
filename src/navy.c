@@ -23,10 +23,12 @@ int navy(int argc, char **argv)
         return (84);
     if (file_error(argc, argv, &info) != 0)
         return (84);
-    if (player_connection(argc, argv, &info) != 0)
-        return (84);
     load_maps(&info);
     load_boat(argc, &info);
+    if (check_boats(argc, &info) != 0)
+        return (84);
+    if (player_connection(argc, argv, &info) != 0)
+        return (84);
     if (game_loop(argc, &info) != 0)
         return (84);
     free_all(&info);
