@@ -26,6 +26,3 @@ navy_positions:  File containing the positions of the ships.
 ## Game exemple:
 
 ![Exemple](example.png?raw=true "Title")
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
