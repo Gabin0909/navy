@@ -12,6 +12,14 @@
 
 global_t global;
 
+int win_or_loose(info_t *info)
+{
+    if (info->win_loose == WIN)
+        return (0);
+    else
+        return (1);
+}
+
 int navy(int argc, char **argv)
 {
     info_t info;
@@ -32,5 +40,5 @@ int navy(int argc, char **argv)
     if (game_loop(argc, &info) != 0)
         return (84);
     free_all(&info);
-    return (0);
+    return (win_or_loose(&info));
 }
